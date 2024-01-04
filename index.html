@@ -3,41 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to Jjhenus</title>
 <meta name="title" content="Bubiier">
 <meta name="description" content="Bubiier">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jjhenus.com/">
-<meta property="og:title" content="Bubiier">
 <meta property="og:image" content="https://cdn.discordapp.com/avatars/599325499256471552/ebd51752a1f97498f381aea18ce9ae03.png?size=1024">
 <link rel="icon" type="image/png" href="https://cdn.discordapp.com/avatars/599325499256471552/ebd51752a1f97498f381aea18ce9ae03.png?size=1024">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <video autoplay muted loop id="backgroundVideo">
+        <source src="https://cdn.discordapp.com/attachments/1160661076845809864/1192098035879129198/1017_17.mp4?ex=65a7d6cf&is=659561cf&hm=0ea023ffd8a78efdf980e2dcee844dae0a4f01cee61d6eb25b2dc5dccb1e06a0&" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
 
-    <section id="home">
-        <h1>Welcome to My Website</h1>
-        <p>Hi, I'm Bubiier. Welcome to my personal website!</p>
-    </section>
+    
+    <div class="text-field-container">
+        <span id="animatedText"></span>
+    </div>
+    
+    
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const targetText = "Bubiier";
+    let currentText = [];
+    const revealSpeed = 300; 
+    const cycleSpeed = 100; 
+    const resetDelay = 2000; 
+    let intervals = [];
 
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Feel free to reach out to me via email at bubiier@jjhenus.com.</p>
-    </section>
+    function initializeCurrentText() {
+        currentText = Array.from({ length: targetText.length }, () => 
+            String.fromCharCode(65 + Math.floor(Math.random() * 26)));
+    }
 
-    <footer>
-        <p>&copy; 2024 Bubiier. All rights reserved.</p>
-    </footer>
+    function setupIntervals() {
+        for (let i = 0; i < targetText.length; i++) {
+            intervals[i] = setInterval(() => {
+                if (currentText[i] !== targetText[i]) {
+                    currentText[i] = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                    document.getElementById("animatedText").textContent = currentText.join('');
+                }
+            }, cycleSpeed);
+        }
+    }
+
+    function startAnimation() {
+        initializeCurrentText();
+        clearIntervals();
+        setupIntervals();
+        revealLetters(0);
+    }
+
+    function revealLetters(index) {
+        if (index < targetText.length) {
+            clearInterval(intervals[index]);
+            currentText[index] = targetText[index];
+            document.getElementById("animatedText").textContent = currentText.join('');
+            setTimeout(() => revealLetters(index + 1), revealSpeed);
+        } else {
+            setTimeout(startReEncryption, resetDelay);
+        }
+    }
+
+    function startReEncryption() {
+        encryptLetters(targetText.length - 1);
+    }
+
+    function encryptLetters(index) {
+        if (index >= 0) {
+            intervals[index] = setInterval(() => {
+                currentText[index] = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+                document.getElementById("animatedText").textContent = currentText.join('');
+            }, cycleSpeed);
+            setTimeout(() => encryptLetters(index - 1), revealSpeed);
+        } else {
+            setTimeout(startAnimation, resetDelay);
+        }
+    }
+
+    function clearIntervals() {
+        intervals.forEach(clearInterval);
+    }
+
+    startAnimation();
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const targetText = "Bubiier";
+    let currentText = '';
+    const revealSpeed = 1000; 
+
+    function updateTitleText() {
+        if (currentText.length < targetText.length) {
+            currentText += targetText[currentText.length];
+        } else {
+            currentText = ''; 
+        }
+        document.title = currentText; 
+        setTimeout(updateTitleText, revealSpeed);
+    }
+
+    updateTitleText();
+});
+</script> 
+    
+    
 </body>
+
+
 </html>
