@@ -30,14 +30,14 @@ body, html {
 #textField {
     font-size: 16px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffffff;
     border-radius: 5px;
     width: 100%;
 }
 
 .text-field-container {
     font-family: 'Kanit', sans-serif;
-    color:  rgba(255, 214, 154, 0.479); 
+    color:  rgba(255, 255, 255, 0.479); 
     font-size: 80px; 
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
@@ -55,17 +55,39 @@ body, html {
 }
 
 #muteButton {
-    position: absolute;  
-    top: 20px;          
-    left: 20px;          
-    padding: 10px;
-    background-color: white;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none; 
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    z-index: 2;        
+    padding: 0; 
+    z-index: 2; 
+    width: 10px; 
+    height: 10px;
 }
 
 #muteButton:hover {
-    background-color: lightgray;
+    cursor: pointer;
+}
+
+#linkIcon {
+    margin: 10px;
+    position: fixed; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+#linkIcon img {
+    width: 120px; 
+    height: 80px; 
+    transition: width 0.3s ease, height 0.3s ease; 
+}
+
+#linkIcon:hover {
+    transform: translateY(-50%) scale(1.1);
 }

@@ -17,15 +17,25 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="https://discord.com/users/599325499256471552" id="linkIcon" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn.discordapp.com/attachments/1144344424369893488/1192533534032793730/kisspng-computer-icons-discord-logo-judgment-apocalypse-s-discord-5b1fbec28d2869.7753029015288071065782.png?ex=65a96c66&is=6596f766&hm=77d116f5caac5b28a155673058aa430fa42e282cb91cfe82244a4475c5f92e9e&" alt="Discord">
+    </a>
+    <button id="muteButton">
+        <img id="muteIcon" src="https://cdn.discordapp.com/attachments/1144344424369893488/1192531818394693642/istockphoto-1305893663-612x612.png?ex=65a96acd&is=6596f5cd&hm=4247eb7a38c45f82dfb7f053839c80d194291da6773fe3da2f60b337ab083ecb&" alt="Unmute">
+    </button>
+    
+
+        
+
+    <div class="text-field-container">
+        <span id="animatedText"></span>
+    </div>
+
     <video id="backgroundVideo" autoplay muted loop>
         <source src="https://cdn.discordapp.com/attachments/1160661076845809864/1192098035879129198/1017_17.mp4?ex=65a7d6cf&is=659561cf&hm=0ea023ffd8a78efdf980e2dcee844dae0a4f01cee61d6eb25b2dc5dccb1e06a0&" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
-    <button id="muteButton">Unmute</button>
-    
-    <div class="text-field-container">
-        <span id="animatedText"></span>
-    </div>
+
     
     
 <script>
@@ -114,17 +124,21 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function() {
     const video = document.getElementById('backgroundVideo');
     const muteButton = document.getElementById('muteButton');
+    const muteIcon = document.getElementById('muteIcon');
 
     muteButton.addEventListener('click', function() {
         if (video.muted) {
             video.muted = false;
-            muteButton.textContent = 'Mute';
+            muteIcon.src = 'https://cdn.discordapp.com/attachments/1144344424369893488/1192531818696679535/mute.png?ex=65a96acd&is=6596f5cd&hm=9cc38af4fd616af6f963febd2fc5c1c723f109763289ca300c1f9a9ae0d4730f&'; 
+            muteIcon.alt = 'Mute';
         } else {
             video.muted = true;
-            muteButton.textContent = 'Unmute';
+            muteIcon.src = 'https://cdn.discordapp.com/attachments/1144344424369893488/1192531818394693642/istockphoto-1305893663-612x612.png?ex=65a96acd&is=6596f5cd&hm=4247eb7a38c45f82dfb7f053839c80d194291da6773fe3da2f60b337ab083ecb&'; 
+            muteIcon.alt = 'Unmute';
         }
     });
 });
+
 
 </script> 
     
