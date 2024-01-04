@@ -17,11 +17,11 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <video autoplay muted loop id="backgroundVideo">
+    <video id="backgroundVideo" autoplay muted loop>
         <source src="https://cdn.discordapp.com/attachments/1160661076845809864/1192098035879129198/1017_17.mp4?ex=65a7d6cf&is=659561cf&hm=0ea023ffd8a78efdf980e2dcee844dae0a4f01cee61d6eb25b2dc5dccb1e06a0&" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
-
+    <button id="muteButton">Unmute</button>
     
     <div class="text-field-container">
         <span id="animatedText"></span>
@@ -110,6 +110,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     updateTitleText();
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const video = document.getElementById('backgroundVideo');
+    const muteButton = document.getElementById('muteButton');
+
+    muteButton.addEventListener('click', function() {
+        if (video.muted) {
+            video.muted = false;
+            muteButton.textContent = 'Mute';
+        } else {
+            video.muted = true;
+            muteButton.textContent = 'Unmute';
+        }
+    });
+});
+
 </script> 
     
     
